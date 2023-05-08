@@ -1,26 +1,37 @@
 
 import json
+import urllib3
+import orjson
+from datetime import date
 
 class ReadJsonFile():
 
     def getDataFile(self):
         lst_DataCovid=[]
         lst_Region = []
+
+        #"https://github.com/pcm-dpc/COVID-19/blob/master/dati-json/dpc-covid19-ita-province.json"
+
         # Opening JSON file
-        with open("./file/data.json", 'r') as file:
+        with open("./file/dpc-covid19-ita-province.json", 'r') as file:
 
             # returns JSON object as
             # a dictionary
             data = json.load(file)
 
+            date_now= date.today()
+            print(date_now)
+
             # Iterating through the json list
             for row in data:
                 dict_DataCovid = {}
                 if row['denominazione_regione'] != "":
-                    dict_DataCovid['denominazione_regione'] = row['denominazione_regione']
-                    dict_DataCovid['totale_casi'] = row['totale_casi']
-                    lst_DataCovid.append(dict_DataCovid)
-                    lst_Region.append(row['denominazione_regione'])
+                    # get only value for today
+                    if row['data'][:10] == date_now:
+                        dict_DataCovid['denominazione_regione'] = row['denominazione_regione']
+                        dict_DataCovid['totale_casi'] = row['totale_casi']
+                        lst_DataCovid.append(dict_DataCovid)
+                        lst_Region.append(row['denominazione_regione'])
 
             # Distinct and sort lst_Region
             lst_Region = list(set(lst_Region))
