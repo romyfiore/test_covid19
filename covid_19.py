@@ -1,9 +1,5 @@
 
-
-import logging
 import json
-_logger = logging.getLogger(__name__)
-
 
 class ReadJsonFile():
 
@@ -41,10 +37,10 @@ class ReadJsonFile():
 
             print("dict_value ----", dict_value)
 
-
-            dict_value = sorted(dict_value.items(), key=lambda x: x[1], reverse=True)
+            #sorted from the region with the highest number of cases to the region with the smallest number of cases
+            # (and in alphabetical order as secondary sorting)
+            dict_value = sorted(dict_value.items(), key=lambda x: (-x[1], x[0]))
             print(dict_value)
-
             # Closing file
             #f.close()
 
