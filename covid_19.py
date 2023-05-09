@@ -7,6 +7,8 @@ import pandas as pd
 
 class ReadJsonFile():
 
+    #TODO: DIVIDERE IL CODICE IN FUNZIONI
+
     def getDataFile(self):
         lst_DataCovid=[]
         lst_Region = []
