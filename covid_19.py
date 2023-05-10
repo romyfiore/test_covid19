@@ -2,7 +2,6 @@
 import json
 from datetime import date,datetime
 import requests
-import sys
 import pandas as pd
 
 class ReadJsonFile():
