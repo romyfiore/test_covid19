@@ -6,8 +6,6 @@ import pandas as pd
 
 class ReadJsonFile():
 
-    #TODO: DIVIDERE IL CODICE IN FUNZIONI
-
     def date_validate(self, date_text):
         format = "%d/%m/%Y"
         try:
