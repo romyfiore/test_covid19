@@ -58,12 +58,13 @@ class ReadJsonFile():
             dict_value[region] = total_case
         return dict_value
 
-    def createFileExcel(self, dict_value):
+    def createFileExcel(self, dict_value, parameter_date):
         try:
-            columns = ['Region', 'Total Case']
+            totalcase = 'Total Case to date ' + str(parameter_date)
+            columns = ['Region', totalcase]
             df = pd.DataFrame(dict_value, columns=columns)
             with pd.ExcelWriter('./Report_excel.xlsx') as writer:
-                df.to_excel(writer, sheet_name='sheet1')
+                df.to_excel(writer, sheet_name='s + + heet1')
             print("Please control the file excel named Report_excel.xlsx.")
         except ValueError:
             print("File not created")
@@ -120,8 +121,5 @@ class ReadJsonFile():
             print("No values were found on the selected date: ", parameter_date)
 
         # Task 3 - Write Excel file
-        self.createFileExcel(dict_value)
+        self.createFileExcel(dict_value, parameter_date)
 
-# start code
-oi = ReadJsonFile()
-oi.getDataFile()
