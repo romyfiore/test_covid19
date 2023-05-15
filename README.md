@@ -7,6 +7,4 @@ Python exercise
 
 - file webserver.py contains the code of Tasks 4 
     - 1) execute webserver.py
-    - 2) Open http://localhost:8000/ 
-    - 3) Insert date parameter to command line 
-    - 4) see to result in http://localhost:8000/  
+    - 2) Open http://localhost:8000?date=dd/mm/yyyy and insert date parameter in format dd/mm/yyyy
